@@ -6,14 +6,17 @@
 
 ## This function returns a list of functions
 ## that provide retrieving and setting the value
-## of an anonymous matrix and retrieving and calculating the inverse
+## of an anonymous matrix and retrieving and setting the inverse
 ## of the anonymous matrix
+## The cached value of the inverse is NULL upon creation or setting
+## a new value of the matrix
+## This function does not calculate the inverse of the matrix
 
 makeCacheMatrix <- function(this_matrix=matrix()) {
     inverse_matrix <- NULL
     set <- function(x) {
         this_matrix <<- x
-        inverse_matrix <<- NULL # Remove cache when matrix is set
+        inverse_matrix <<- NULL # set cache to NULL when matrix is set
     }
     get <- function() this_matrix
     set_inverse <- function(y) inverse_matrix <<- y
